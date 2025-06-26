@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+canvas {
+  display: block;
+  background-image: url('mama.jpeg'); /* Sua imagem de fundo */
+  background-size: cover;
+  margin: 0 auto;
+  border: 3px solid #fff;
+}
+
+#pontuacao {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+#gameover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 32px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.oculto {
+  display: none;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 18px;
+  cursor: pointer;
+}

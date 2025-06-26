@@ -1,77 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Cobrinha da Mama</title>
-  <style>
-    canvas {
-      background: #111;
-      display: block;
-      margin: 20px auto;
-      border: 3px solid #fff;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cobrinha da Mama 🐍💖</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="game" width="400" height="400"></canvas>
-  <script>
-    const canvas = document.getElementById("game");
-    const ctx = canvas.getContext("2d");
+  <canvas id="game" width="640" height="480"></canvas>
+  <div id="pontuacao">Pontos: 0</div>
+  <div id="gameover" class="oculto">
+    <p>💀 Game Over, Mama! 💀</p>
+    <button onclick="reiniciarJogo()">Jogar de novo</button>
+  </div>
 
-    const box = 20;
-    let snake = [{ x: 200, y: 200 }];
-    let direction = "RIGHT";
-    let food = {
-      x: Math.floor(Math.random() * 20) * box,
-      y: Math.floor(Math.random() * 20) * box
-    };
-
-    document.addEventListener("keydown", event => {
-      if (event.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
-      else if (event.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
-      else if (event.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
-      else if (event.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
-    });
-
-    function draw() {
-      ctx.clearRect(0, 0, 400, 400);
-
-      for (let i = 0; i < snake.length; i++) {
-        const img = new Image();
-        img.src = "mama.jpeg"; // essa vai ser tua carinha
-        ctx.drawImage(img, snake[i].x, snake[i].y, box, box);
-      }
-
-      ctx.fillStyle = "red";
-      ctx.fillRect(food.x, food.y, box, box);
-
-      let head = { ...snake[0] };
-      if (direction === "UP") head.y -= box;
-      if (direction === "DOWN") head.y += box;
-      if (direction === "LEFT") head.x -= box;
-      if (direction === "RIGHT") head.x += box;
-
-      if (
-        head.x < 0 || head.x >= 400 ||
-        head.y < 0 || head.y >= 400 ||
-        snake.some(s => s.x === head.x && s.y === head.y)
-      ) {
-        clearInterval(game);
-        alert("Game Over, Mama!");
-      }
-
-      snake.unshift(head);
-      if (head.x === food.x && head.y === food.y) {
-        food = {
-          x: Math.floor(Math.random() * 20) * box,
-          y: Math.floor(Math.random() * 20) * box
-        };
-      } else {
-        snake.pop();
-      }
-    }
-
-    const game = setInterval(draw, 100);
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
