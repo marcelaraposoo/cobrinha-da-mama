@@ -8,17 +8,29 @@
 </head>
 <body>
   <canvas id="game" width="640" height="480"></canvas>
+
   <div id="pontuacao">Pontos: 0</div>
+
   <div id="gameover" class="oculto">
     <p>💀 Game Over hahaha 💀</p>
     <button onclick="reiniciarJogo()">Jogar de novo</button>
   </div>
+
+  <!-- Botões para toque no celular -->
+  <div id="controlesTouch">
+    <button onclick="mover('UP')">⬆️</button>
+    <div>
+      <button onclick="mover('LEFT')">⬅️</button>
+      <button onclick="mover('RIGHT')">➡️</button>
+    </div>
+    <button onclick="mover('DOWN')">⬇️</button>
+  </div>
+
   <audio id="musicaAmbiente" src="Glitcher - Dyalla.mp3" autoplay loop></audio>
 
-    <button id="toggleSom" onclick="alternarSom()">
+  <button id="toggleSom" onclick="alternarSom()">
     <img id="iconeSom" src="icone-som.png" alt="Som" />
-    </button>
-
+  </button>
 
   <script src="script.js"></script>
 </body>

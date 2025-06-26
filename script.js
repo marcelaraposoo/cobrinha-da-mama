@@ -26,14 +26,13 @@ let somAtivado = true;
 function alternarSom() {
   if (somAtivado) {
     musicaAmbiente.pause();
-    iconeSom.src = "icone-mudo.png"; // troca o ícone pro mudo
+    iconeSom.src = "icone-mudo.png";
   } else {
     musicaAmbiente.play();
-    iconeSom.src = "icone-som.png"; // volta pro ícone de som
+    iconeSom.src = "icone-som.png";
   }
   somAtivado = !somAtivado;
 }
-
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "a" && direction !== "RIGHT") direction = "LEFT";
@@ -41,6 +40,14 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "w" && direction !== "DOWN") direction = "UP";
   if (event.key === "s" && direction !== "UP") direction = "DOWN";
 });
+
+// Função para controle por toque
+function mover(direcaoToque) {
+  if (direcaoToque === "LEFT" && direction !== "RIGHT") direction = "LEFT";
+  if (direcaoToque === "RIGHT" && direction !== "LEFT") direction = "RIGHT";
+  if (direcaoToque === "UP" && direction !== "DOWN") direction = "UP";
+  if (direcaoToque === "DOWN" && direction !== "UP") direction = "DOWN";
+}
 
 function gerarComida() {
   return {
