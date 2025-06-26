@@ -19,6 +19,21 @@ let morreu = false;
 
 const somComida = new Audio("colisao.mp3");
 const somGameOver = new Audio("perdeu.mp3");
+const musicaAmbiente = document.getElementById("musicaAmbiente");
+const iconeSom = document.getElementById("iconeSom");
+let somAtivado = true;
+
+function alternarSom() {
+  if (somAtivado) {
+    musicaAmbiente.pause();
+    iconeSom.src = "icone-mudo.png"; // troca o ícone pro mudo
+  } else {
+    musicaAmbiente.play();
+    iconeSom.src = "icone-som.png"; // volta pro ícone de som
+  }
+  somAtivado = !somAtivado;
+}
+
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "a" && direction !== "RIGHT") direction = "LEFT";
@@ -61,6 +76,7 @@ function draw() {
     snake.some((segment) => segment.x === head.x && segment.y === head.y)
   ) {
     somGameOver.play();
+    musicaAmbiente.volume = 0.1;
     morreu = true;
     document.getElementById("gameover").classList.remove("oculto");
     clearInterval(game);
