@@ -6,28 +6,35 @@
 
 html, body {
   height: 100%;
-  overflow: hidden;
-  font-family: sans-serif;
-  background-image: url('mama.jpg');
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('mama.jpg') no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 canvas {
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
   width: 100vw;
   height: 100vh;
 }
 
 #pontuacao {
   position: absolute;
-  top: 20px;
-  right: 40px;
-  color: white;
-  font-size: 28px;
-  text-shadow: 2px 2px 5px #000;
+  top: 30px;
+  right: 50px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 3px 3px 6px #000;
   z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 15px;
 }
 
 #gameover {
@@ -35,34 +42,52 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
-  font-size: 36px;
   background: rgba(0, 0, 0, 0.85);
-  padding: 40px 60px;
-  border-radius: 25px;
+  color: white;
+  padding: 60px 80px;
+  border-radius: 30px;
   text-align: center;
   z-index: 2;
   max-width: 90vw;
-  box-shadow: 0 0 20px black;
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+  animation: aparecer 0.6s ease-in-out;
+}
+
+@keyframes aparecer {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }
 
 .oculto {
   display: none;
 }
 
+#gameover p {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px #800080;
+}
+
 button {
-  padding: 15px 30px;
-  margin-top: 20px;
+  padding: 15px 40px;
   font-size: 20px;
-  cursor: pointer;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: #a020f0;
   color: white;
-  box-shadow: 2px 2px 5px #000;
+  cursor: pointer;
   transition: 0.2s;
+  box-shadow: 3px 3px 10px #000;
 }
 
 button:hover {
   background-color: #800080;
+  transform: scale(1.05);
 }
