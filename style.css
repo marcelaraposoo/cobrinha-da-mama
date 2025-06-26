@@ -1,16 +1,23 @@
-body {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
   overflow: hidden;
   font-family: sans-serif;
+  background-image: url('mama.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 canvas {
   display: block;
-  background-image: url('mama.jpeg'); /* Sua imagem de fundo */
-  background-size: cover;
-  margin: 0 auto;
-  border: 3px solid #fff;
+  width: 100vw;
+  height: 100vh;
 }
 
 #pontuacao {
@@ -18,8 +25,9 @@ canvas {
   top: 20px;
   right: 40px;
   color: white;
-  font-size: 24px;
-  text-shadow: 2px 2px 4px #000;
+  font-size: 28px;
+  text-shadow: 2px 2px 5px #000;
+  z-index: 1;
 }
 
 #gameover {
@@ -28,11 +36,14 @@ canvas {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 32px;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 30px;
-  border-radius: 20px;
+  font-size: 36px;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 40px 60px;
+  border-radius: 25px;
   text-align: center;
+  z-index: 2;
+  max-width: 90vw;
+  box-shadow: 0 0 20px black;
 }
 
 .oculto {
@@ -40,8 +51,18 @@ canvas {
 }
 
 button {
-  padding: 10px 20px;
+  padding: 15px 30px;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: #a020f0;
+  color: white;
+  box-shadow: 2px 2px 5px #000;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #800080;
 }

@@ -1,6 +1,14 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
+function ajustarCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", ajustarCanvas);
+ajustarCanvas();
+
 const box = 20;
 let snake = [{ x: 160, y: 240 }];
 let direction = "RIGHT";
@@ -9,11 +17,9 @@ let pontos = 0;
 let game;
 let morreu = false;
 
-// Sons
 const somComida = new Audio("colisao.mp3");
 const somGameOver = new Audio("perdeu.mp3");
 
-// Movimento da cobrinha
 document.addEventListener("keydown", (event) => {
   if (event.key === "a" && direction !== "RIGHT") direction = "LEFT";
   if (event.key === "d" && direction !== "LEFT") direction = "RIGHT";
@@ -33,24 +39,20 @@ function draw() {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Desenha a cobra
   for (let i = 0; i < snake.length; i++) {
-    ctx.fillStyle = "#800080"; // roxo mama
+    ctx.fillStyle = "#800080";
     ctx.fillRect(snake[i].x, snake[i].y, box, box);
   }
 
-  // Desenha a comida
   ctx.fillStyle = "lime";
   ctx.fillRect(food.x, food.y, box, box);
 
-  // Movimento
   let head = { ...snake[0] };
   if (direction === "RIGHT") head.x += box;
   if (direction === "LEFT") head.x -= box;
   if (direction === "UP") head.y -= box;
   if (direction === "DOWN") head.y += box;
 
-  // Colisão com bordas
   if (
     head.x < 0 ||
     head.x >= canvas.width ||
@@ -85,8 +87,8 @@ function reiniciarJogo() {
   morreu = false;
   document.getElementById("pontuacao").innerText = `Pontos: 0`;
   document.getElementById("gameover").classList.add("oculto");
+  clearInterval(game);
   game = setInterval(draw, 100);
 }
 
-// Começa o jogo
 reiniciarJogo();
